@@ -25,6 +25,7 @@ class File(CMSPlugin):
     file = models.FileField(_("file"), upload_to=CMSPlugin.get_media_path)
     title = models.CharField(_("title"), max_length=255, null=True, blank=True)
     show_filesize = models.BooleanField(_("show filesize"), default=True)
+    open_new_window = models.BooleanField(_("open in new window"), default=False)
     # CMS_ICON_EXTENSIONS and CMS_ICON_PATH are assumed to be plugin-specific, and not included in cms.settings
     # -- they are therefore imported from django.conf.settings
     ICON_EXTENSIONS = getattr(settings, "CMS_FILE_ICON_EXTENSIONS", ('gif', 'png'))
