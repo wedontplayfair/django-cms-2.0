@@ -45,6 +45,7 @@ from django.template.defaultfilters import title, escape, force_escape, escapejs
 from django.utils.encoding import force_unicode
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.csrf import csrf_exempt
 
 import os
 from copy import deepcopy
@@ -1046,6 +1047,7 @@ class PageAdmin(model_admin):
             return render_admin_menu_item(request, page)
         return HttpResponseForbidden(_("You do not have permission to change this page's in_navigation status"))
 
+    @csrf_exempt
     @create_on_success
     def add_plugin(self, request):
         if 'history' in request.path or 'recover' in request.path:
