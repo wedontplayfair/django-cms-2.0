@@ -1275,6 +1275,7 @@ class PageAdmin(model_admin):
         else:
             return HttpResponse(str("error"))
 
+    @csrf_exempt
     @create_on_success
     def remove_plugin(self, request):
         if request.method == "POST" and not 'history' in request.path:
